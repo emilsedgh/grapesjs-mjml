@@ -45,15 +45,8 @@ module.exports = (env, options) => {
         'uglify-js': path.resolve(__dirname, 'mocks/uglify-js'),
       }
     },
-    // make sure to keep_fnames or else it will break grapesjs, see https://github.com/artf/grapesjs-mjml/issues/110
     optimization: {
-      minimizer: [
-        new TerserPlugin({
-          terserOptions: {
-            keep_fnames: true
-          },
-        }),
-      ],
+      minimize: false
     },
     target: 'web',
     plugins: plugins
