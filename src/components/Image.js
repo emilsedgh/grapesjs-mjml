@@ -12,7 +12,7 @@ export default (editor, { dc, coreMjmlModel, coreMjmlView }) => {
       ...coreMjmlModel,
       defaults: {
         name: 'Image',
-        resizable: false,
+        resizable: true,
         highlightable: false,
         draggable: '[data-gjs-type=mj-column],[data-gjs-type=mj-section]',
         stylable: [
