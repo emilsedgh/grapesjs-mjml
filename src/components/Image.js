@@ -32,6 +32,10 @@ export default (editor, { dc, coreMjmlModel, coreMjmlView }) => {
         traits: ['href', 'rel', 'alt', 'title'],
         void: true,
       },
+
+      getEl() {
+        return this.view && this.view.el.querySelector('img');
+      },
     },
 
     view: {
