@@ -12,6 +12,16 @@ export default (editor, { dc, opt, coreMjmlModel, coreMjmlView, sandboxEl }) => 
       ...coreMjmlModel,
       defaults: {
         name: 'Column',
+        resizable: {
+          tl: 0,
+          tc: 0,
+          tr: 0,
+          cl: 1,
+          cr: 1,
+          bl: 0,
+          br: 0,
+          bc: 0
+        },
         draggable: '[data-gjs-type=mj-section]',
         stylable: [
           'background-color', 'vertical-align', 'width',

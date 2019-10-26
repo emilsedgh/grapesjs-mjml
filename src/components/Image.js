@@ -34,7 +34,7 @@ export default (editor, { dc, coreMjmlModel, coreMjmlView }) => {
       },
 
       getEl() {
-        return this.view && this.view.el.querySelector('img');
+        return this.view && this.view.el.querySelector('tr > td > table');
       },
     },
 
