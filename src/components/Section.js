@@ -11,7 +11,7 @@ export default (editor, { dc, coreMjmlModel, coreMjmlView }) => {
       ...coreMjmlModel,
       defaults: {
         name: 'Section',
-        draggable: '[data-gjs-type=mj-body],[data-gjs-type=mj-wrapper]',
+        draggable: '[data-gjs-type=mj-body]',
         droppable: '[data-gjs-type=mj-column]',
         'style-default': {
           'padding-top': '10px',
@@ -54,6 +54,25 @@ export default (editor, { dc, coreMjmlModel, coreMjmlView }) => {
       },
 
       getChildrenSelector() {
+        const parent = this.model.parent();
+
+        /*
+         * mj-section can be rendered inside mj-body or mj-wrapper.
+         * Since getMjmlTemplate uses parentView to render the template,
+         * the parent might be a mj-wrapper.
+         *
+         * So the template that gets renreder can be:
+         *
+         * mjml -> mj-body -> mj-section or
+         * mjml -> mj-body -> mj-wrapper -> mj-section
+         *
+         * In case of latter, we need a different query selector,
+         * which is one more level nested.
+         */
+
+        if (parent.get('type') === 'mj-wrapper')
+          return 'table > tbody > tr > td table > tbody > tr > td';
+
         return 'table > tbody > tr > td';
       },
 
