@@ -75,9 +75,9 @@ export default (editor, { dc, coreMjmlModel, coreMjmlView }) => {
         const parent = this.model.parent();
 
         if (parent.get('type') === 'mj-wrapper')
-          return sandboxEl.querySelector('table > tbody > tr > td').innerHTML
+          return sandboxEl.querySelector('table > tbody > tr > td').innerHTML;
         else
-          return sandboxEl.firstChild.innerHTML
+          return sandboxEl.firstChild.innerHTML;
       },
 
       init() {
