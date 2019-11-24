@@ -54,8 +54,10 @@ export default (editor, { dc, coreMjmlModel, coreMjmlView }) => {
       },
 
       getChildrenSelector() {
-        const parent = this.model.parent();
+        return 'table > tbody > tr > td';
+      },
 
+      getTemplateFromEl(sandboxEl) {
         /*
          * mj-section can be rendered inside mj-body or mj-wrapper.
          * Since getMjmlTemplate uses parentView to render the template,
@@ -70,10 +72,12 @@ export default (editor, { dc, coreMjmlModel, coreMjmlView }) => {
          * which is one more level nested.
          */
 
-        if (parent.get('type') === 'mj-wrapper')
-          return 'table > tbody > tr > td table > tbody > tr > td';
+        const parent = this.model.parent();
 
-        return 'table > tbody > tr > td';
+        if (parent.get('type') === 'mj-wrapper')
+          return sandboxEl.querySelector('table > tbody > tr > td').innerHTML
+        else
+          return sandboxEl.firstChild.innerHTML
       },
 
       init() {
