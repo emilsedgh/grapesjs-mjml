@@ -38,6 +38,11 @@ export default (editor, { dc, opt, coreMjmlModel, coreMjmlView, sandboxEl }) => 
         style: 'pointer-events: all;' + (clmPadd ? `padding: ${clmPadd};` : ''),
       },
 
+      init() {
+        coreMjmlView.init.call(this);
+        this.listenTo(this.model.get('components'), 'add remove', this.render);
+      },
+
       getTemplateFromMjml() {
         let mjmlTmpl = this.getMjmlTemplate();
         let innerMjml = this.getInnerMjmlTemplate();
