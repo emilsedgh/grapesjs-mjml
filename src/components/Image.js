@@ -14,7 +14,7 @@ export default (editor, { dc, coreMjmlModel, coreMjmlView }) => {
         name: 'Image',
         resizable: true,
         highlightable: false,
-        draggable: '[data-gjs-type=mj-column],[data-gjs-type=mj-section]',
+        draggable: '[data-gjs-type=mj-column]',
         stylable: [
           'width', 'height',
           'padding', 'padding-top', 'padding-left', 'padding-right', 'padding-bottom',
